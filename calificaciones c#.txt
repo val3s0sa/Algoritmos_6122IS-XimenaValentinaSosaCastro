@@ -1,0 +1,125 @@
+using System;
+
+namespace CALIFICACIONES
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Ingrese el número máximo de firmas");
+            float numF = float.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese el total de firmas que tiene el alumno");
+            float Tfirm = float.Parse(Console.ReadLine());
+            float valF = 100;
+            Console.WriteLine("Su porcentaje del total de firmas es");
+            float PTfirm = firmas(numF, Tfirm, valF);
+            Console.WriteLine(firmas(numF, Tfirm, valF));
+            {
+                if (PTfirm < 80)
+                    Console.WriteLine("Nooo tu si tas cabron, ya reprobaste, ya pa q sacas tu calificación XD, pero bueno, sigamos...");
+
+            }
+
+
+            Console.WriteLine("Ingrese los puntos totales del exámen");
+            float ptsE = float.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese los puntos obtenidos del exámen (si no tuviste derecho a exámen escribe el número 0)");
+            float pOE = float.Parse(Console.ReadLine());
+            float valE = 4;
+            Console.WriteLine("Los puntos obtenidos del exámen son");
+            float PTexamen = examen(ptsE, pOE, valE);
+            Console.WriteLine(examen(ptsE, pOE, valE));
+
+            Console.WriteLine("Ingrese los puntos totales del hacer");
+            float ptsH = float.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese los puntos obtenidos del hacer");
+            float pOH = float.Parse(Console.ReadLine());
+            float valH = 4;
+            Console.WriteLine("Los puntos obtenidos del hacer son");
+            float PThacer = hacer(ptsH, pOH, valH);
+            Console.WriteLine(hacer(ptsH, pOH, valH));
+
+            Console.WriteLine("Ingrese los puntos totales del ser");
+            float ptsS = float.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese los puntos obtenidos del ser");
+            float ptsOS = float.Parse(Console.ReadLine());
+            float valS = 5;
+            Console.WriteLine("Su porcentaje obtenido del ser es");
+            float PTser = ser(ptsS, ptsOS, valS);
+            Console.WriteLine(ser(ptsS, ptsOS, valS));
+
+            Console.WriteLine("Ingrese los puntos totales de la adaptabilidad");
+            float ptsA = float.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese los puntos obtenidos de la adaptabilidad");
+            float ptsOA = float.Parse(Console.ReadLine());
+            float valA = 5;
+            Console.WriteLine("Su porcentaje obtenido de la adaptabilidad es");
+            float PTadap = adap(ptsA, ptsOA, valA);
+            Console.WriteLine(adap(ptsA, ptsOA, valA));
+
+            Console.WriteLine("Su puntaje total del ser es");
+            float PTsa = PTser + PTadap;
+            Console.WriteLine(PTsa);
+
+            Console.WriteLine("Lo que equivale en puntos de la calificacion a");
+            float PTsa2 = PTsa / 10;
+            Console.WriteLine(PTsa2);
+
+            Console.WriteLine("Ingrese los puntos totales del extracurricular");
+            float ptsEx = float.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese los puntos obtenidos del extracurricular");
+            float ptsOEx = float.Parse(Console.ReadLine());
+            float valEx = 10;
+            Console.WriteLine("Su porcentaje obtenido del extracurricular es");
+            float PTex = ext(ptsEx, ptsOEx, valEx);
+            Console.WriteLine(ext(ptsEx, ptsOEx, valEx));
+
+            Console.WriteLine("Lo que equivale en puntos de la calificacion a");
+            float ptsTEx = PTex / 10;
+            Console.WriteLine(ptsTEx);
+
+            Console.WriteLine("Felicidades!, su calificación es de");
+            float calF = PTexamen + PThacer + PTsa2 + ptsTEx;
+            Console.WriteLine(calF);
+            {
+                if (calF < 7)
+                    Console.WriteLine("Ps ni modo, a recuperar la materia, no te me aguites, echale ganas el próximo parcial <3");
+            }
+        }
+
+        public static float regla3(float porcentaje, float valor1, float valor2)
+        {
+            return (valor1 / porcentaje) * valor2;
+        }
+
+        public static float firmas(float numF, float Tfirm, float valF)
+        {
+            return regla3(numF, valF, Tfirm);
+        }
+
+        public static float examen(float valE, float pOE, float ptsE)
+        {
+            return regla3(valE, pOE, ptsE);
+        }
+
+        public static float hacer(float valH, float pOH, float ptsH)
+        {
+            return regla3(valH, pOH, ptsH);
+        }
+
+        public static float ser(float valS, float ptsOS, float ptsS)
+        {
+            return regla3(valS, ptsOS, ptsS);
+        }
+
+        public static float adap(float valA, float ptsOA, float ptsA)
+        {
+            return regla3(valA, ptsOA, ptsA);
+        }
+
+        public static float ext(float valEx, float ptsOEx, float ptsEx)
+        {
+            return regla3(valEx, ptsOEx, ptsEx);
+        }
+    }
+}
